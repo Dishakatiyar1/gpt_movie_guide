@@ -20,20 +20,22 @@ const Login = () => {
   const name = useRef(null);
   const email = useRef(null);
   const password = useRef(null);
+  const [loading, setLoading] = useState(false);
 
   const toggleForms = () => {
+    setErrorMessage("");
     setIsSignInForm(!isSignInForm);
   };
   const handleButtonClick = (e) => {
     e.preventDefault();
-    // validate the form data
     const errMessage = checkDataValidation(
       email.current?.value,
       password.current?.value
     );
     setErrorMessage(errMessage);
-    // if err is there then return don't execute next lines of code
     if (errMessage) return;
+
+    setLoading(true);
 
     // sign up & sign in user
     if (!isSignInForm) {
@@ -54,14 +56,6 @@ const Login = () => {
               // auth have updated value
               const { uid, email, displayName, photoURL } = user;
               // update your redux store
-              dispatch(
-                addUser({
-                  uid: uid,
-                  email: email,
-                  displayName: displayName,
-                  photoURL: photoURL,
-                })
-              );
               localStorage.setItem(
                 "user",
                 JSON.stringify({
@@ -71,6 +65,15 @@ const Login = () => {
                   photoURL: photoURL,
                 })
               );
+              dispatch(
+                addUser({
+                  uid: uid,
+                  email: email,
+                  displayName: displayName,
+                  photoURL: photoURL,
+                })
+              );
+
               // then navigate
               // onAuthStateChange will navigate
               navigate("/browse");
@@ -79,12 +82,16 @@ const Login = () => {
               // An error occurred
               console.log("Error while updating profile");
             });
+          setLoading(false);
         })
         .catch((error) => {
           const errorCode = error.code;
           const errorMsg = error.message;
-          console.log(errorMsg);
-          setErrorMessage(errorCode + "-" + errorMsg);
+
+          errorMsg == "Firebase: Error (auth/email-already-in-use)."
+            ? setErrorMessage("Email already exits.")
+            : setErrorMessage("Please use valid credentials.");
+          setLoading(false);
         });
     } else {
       signInWithEmailAndPassword(
@@ -105,6 +112,15 @@ const Login = () => {
               // Profile updated!
               // auth have updated value
               const { uid, email, displayName, photoURL } = auth.currentUser;
+              localStorage.setItem(
+                "user",
+                JSON.stringify({
+                  uid: uid,
+                  email: email,
+                  displayName: displayName,
+                  photoURL: photoURL,
+                })
+              );
               // update your redux store
               dispatch(
                 addUser({
@@ -122,18 +138,20 @@ const Login = () => {
               // An error occurred
               console.log("Error while updating profile");
             });
+          setLoading(false);
         })
         .catch((error) => {
           const errorCode = error.code;
           const errorMsg = error.message;
-          setErrorMessage(errorCode + " : " + errorMsg);
+          setErrorMessage("Invalid credentials");
+          setLoading(false);
         });
     }
   };
 
   return (
     <div className="min-h-screen">
-      <Header />
+      {/* <Header /> */}
       <div className="absolute w-full min-h-screen">
         <img src={BACKGROUND_IMG} alt="bg-image" className="min-h-screen" />
       </div>
@@ -166,7 +184,14 @@ const Login = () => {
           className="px-6 py-2 mt-4 bg-red-600 text-white rounded-md w-full"
           onClick={handleButtonClick}
         >
-          {isSignInForm ? "Sign In" : "Sign Up"}
+          {/* {isSignInForm ? "Sign In" : "Sign Up"} */}
+          {isSignInForm
+            ? loading
+              ? "Signing in..."
+              : "Sign In"
+            : loading
+            ? "Signing up..."
+            : "Sign Up"}
         </button>
         <div className="flex justify-between opacity-80 mt-1">
           <div>
