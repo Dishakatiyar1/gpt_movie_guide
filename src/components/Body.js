@@ -1,7 +1,7 @@
 import React from "react";
 import Login from "./Login";
 import Browse from "./Browse";
-import {Routes, Route} from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import MovieDetails from "./MovieDetails";
 
 const Body = () => {
@@ -9,8 +9,8 @@ const Body = () => {
     <>
       <Routes>
         <Route path="/" element={<Login />} />
-        <Route path="/browse" element={<Browse />} />
-        <Route path="/browse/:movieId" element={<MovieDetails />} />
+        <Route path="/explore" element={<Browse />} />
+        <Route path="/explore/:movieId" element={<MovieDetails />} />
       </Routes>
     </>
   );

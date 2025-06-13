@@ -16,7 +16,7 @@ const MovieList = ({ title, movies }) => {
             {movies?.map((movie) => (
               <Link
                 key={movie.id}
-                to={`/browse/${movie.id}`}
+                to={`/explore/${movie.id}`}
                 className="flex-shrink-0 transform transition-transform duration-200 hover:scale-105 focus:scale-105 focus:outline-none focus:ring-2 focus:ring-white focus:ring-opacity-50 rounded-lg"
               >
                 <MovieCard

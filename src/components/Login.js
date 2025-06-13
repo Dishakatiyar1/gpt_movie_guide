@@ -76,7 +76,7 @@ const Login = () => {
 
               // then navigate
               // onAuthStateChange will navigate
-              navigate("/browse");
+              navigate("/explore");
             })
             .catch((error) => {
               // An error occurred
@@ -132,7 +132,7 @@ const Login = () => {
               );
               // then navigate
               // onAuthStateChange will do this
-              navigate("/browse");
+              navigate("/explore");
             })
             .catch((error) => {
               // An error occurred
