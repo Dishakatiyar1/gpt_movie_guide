@@ -206,7 +206,7 @@ const Login = () => {
 
         <div className="flex mt-12">
           <p className="text-white text-base opacity-80">
-            {isSignInForm ? "New to Netflix?" : "Already Registered?"}
+            {isSignInForm ? "New here?" : "Already Registered?"}
           </p>
           <p className="text-white ml-2 hover:underline" onClick={toggleForms}>
             {isSignInForm ? "Sign up now." : "Sign in"}
@@ -214,8 +214,14 @@ const Login = () => {
         </div>
 
         <p className="text-white text-sm mt-4 opacity-80">
-          This page is protected by Google reCAPTCHA to ensure you're not a bot.
+          This page simulates a login UI for demo purposes only. No bots, no
+          reCAPTCHA here
           <Link className="underline text-blue-700"> Learn more.</Link>
+        </p>
+        <p className="text-gray-400 text-sm text-center mt-4">
+          This is a personal project built by Disha Katiyar using Firebase
+          Authentication. Data is stored securely via Firebase. Not affiliated
+          with Netflix or any official service.
         </p>
       </form>
     </div>
