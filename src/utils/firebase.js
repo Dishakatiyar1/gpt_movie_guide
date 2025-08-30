@@ -1,7 +1,7 @@
 // Import the functions you need from the SDKs you need
-import {initializeApp} from "firebase/app";
-import {getAnalytics} from "firebase/analytics";
-import {getAuth} from "firebase/auth";
+import { initializeApp } from "firebase/app";
+import { getAnalytics } from "firebase/analytics";
+import { getAuth } from "firebase/auth";
 
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
@@ -9,13 +9,13 @@ import {getAuth} from "firebase/auth";
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
-  apiKey: "AIzaSyBWDmTmeXwpLzukwSklfRt0hOb9ZWCMoRU",
-  authDomain: "netflixgpt-2ac14.firebaseapp.com",
-  projectId: "netflixgpt-2ac14",
-  storageBucket: "netflixgpt-2ac14.appspot.com",
-  messagingSenderId: "679828956937",
-  appId: "1:679828956937:web:13c31b68bccb93d559d5d8",
-  measurementId: "G-0E9LQFF65Y",
+  apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
+  authDomain: process.env.REACT_APP_FIREBASE_AUTH_DOMAIN,
+  projectId: process.env.REACT_APP_FIREBASE_PROJECT_ID,
+  storageBucket: process.env.REACT_APP_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: process.env.REACT_APP_FIREBASE_MESSAGING_SENDER_ID,
+  appId: process.env.REACT_APP_FIREBASE_APP_ID,
+  measurementId: process.env.REACT_APP_FIREBASE_MEASUREMENT_ID,
 };
 
 // Initialize Firebase
