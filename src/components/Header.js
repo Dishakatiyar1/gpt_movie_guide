@@ -4,10 +4,11 @@ import { auth } from "../utils/firebase";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { removeUser } from "../utils/userSlice";
-import { SUPPORTED_LANGUAGES, logo_url } from "../utils/constants";
+import { SUPPORTED_LANGUAGES } from "../utils/constants";
 import { toggleGptSearchView } from "../utils/gptSlice";
 import { chooseLanguage } from "../utils/configSlice";
 import { FaArrowDown, FaArrowUp } from "react-icons/fa6";
+import logo from "../assets/logo.png";
 
 const Header = () => {
   const navigate = useNavigate();
@@ -61,13 +62,13 @@ const Header = () => {
   };
 
   return (
-    <header className="absolute w-full px-4 md:px-8 lg:px-12 py-3 md:py-4 bg-gradient-to-b from-black/90 via-black/60 to-transparent backdrop-blur-sm z-50 border-b border-white/10">
+    <header className="absolute w-full px-4 md:px-8 lg:px-12 py-2 md:py-3 bg-gradient-to-b from-black/90 via-black/60 to-transparent backdrop-blur-sm z-50 border-b border-white/10">
       <div className="flex justify-between items-center w-full max-w-7xl mx-auto">
         <div className="flex-shrink-0">
           <img
-            src={logo_url}
+            src={logo}
             alt="logo"
-            className="w-28 md:w-36 h-12 md:h-16 object-contain hover:scale-105 transition-transform duration-200 cursor-pointer"
+            className="w-24 md:w-36 object-contain hover:scale-105 transition-transform duration-200 cursor-pointer"
           />
         </div>
 

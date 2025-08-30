@@ -152,10 +152,17 @@ const Login = () => {
   return (
     <div className="min-h-screen">
       {/* <Header /> */}
+      <div className="bg-yellow-600 text-black p-3 text-center">
+        <h3 className="font-bold">⚠️ DEMO PROJECT ONLY</h3>
+        <p className="text-sm">
+          This is a Netflix-inspired UI demo by Disha Katiyar. Not affiliated
+          with Netflix Inc.
+        </p>
+      </div>
       <div className="absolute w-full min-h-screen">
         <img src={BACKGROUND_IMG} alt="bg-image" className="min-h-screen" />
       </div>
-      <form className="absolute p-8 md:p-16 pb-32 sm:pb-auto bg-black w-full md:w-6/12 lg:w-4/12 h-auto my-36 mx-auto right-0 left-0 rounded-md bg-opacity-95 md:bg-opacity-85">
+      <form className="absolute p-8 md:p-16 pb-32 sm:pb-auto bg-black w-full md:w-6/12 lg:w-4/12 h-auto mt-24 mb-36 mx-auto right-0 left-0 rounded-md bg-opacity-95 md:bg-opacity-85">
         <p className="text-2xl text-white font-semibold">
           {isSignInForm ? "Sign In" : "Sign Up"}
         </p>
